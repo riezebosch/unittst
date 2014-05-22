@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AgeCalculator
 {
-    public class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
