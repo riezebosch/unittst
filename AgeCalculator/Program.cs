@@ -7,28 +7,26 @@ using System.Threading.Tasks;
 
 namespace AgeCalculator
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.Write("Voer de geboortedatum in: ");
             var birth = DateTime.Parse(Console.ReadLine(), CultureInfo.CurrentCulture);
 
-            var age = CalcAge(birth);
-            Console.WriteLine("De leeftijd is: {0}", age);
+            //var age = CalcAge(birth);
+            //Console.WriteLine("De leeftijd is: {0}", age);
         }
 
-        private static int CalcAge(DateTime birth)
+
+
+        public static int CalcAge(DateTime birth)
         {
             var now = DateTime.Now;
             var result = now.Year - birth.Year;
 
-            if (now.Month < birth.Month)
-            {
-                result--;
-            }
-
-            if (now.Month == birth.Month && now.Day < birth.Day)
+            if (now.Month < birth.Month || 
+                (now.Month == birth.Month && now.Day < birth.Day))
             {
                 result--;
             }
