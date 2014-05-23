@@ -7,20 +7,15 @@ namespace HRM.Tests
     class PersoneelsAdministratieMock : HRM.IPersoneelsAdministratie
     {
         public Persoon Persoon { get; set; }
-
-
-
         public PersoneelsAdministratieMock()
         {
             Persoon = new Persoon();
         }
-
         public Persoon Zoek(int id)
         {
             ZoekWasCalledVlaggetje = true;
             return Persoon;
         }
-
         public bool ZoekWasCalledVlaggetje { get; set; }
     }
 
