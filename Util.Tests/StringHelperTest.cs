@@ -7,46 +7,55 @@ namespace Util.Tests
     [TestClass]
     public class StringHelperTest
     {
-        [TestMethod]
-        public void TestReverse()
+        [TestClass]
+        public class ReverseTests
         {
-            // Arrange
-            var target = new StringHelper();
+            [TestMethod]
+            [TestCategory("Unit Test")]
+            public void TestReverse()
+            {
+                // Arrange
+                var target = new StringHelper();
 
-            // Act
-            string result = target.Reverse("a");
+                // Act
+                string result = target.Reverse("a");
 
-            // Assert
-            Assert.AreEqual("a", result);
-        }
+                // Assert
+                Assert.AreEqual("a", result);
+            }
 
-        [TestMethod]
-        public void TestReverseWithMultipleCharachters()
-        {
-            var target = new StringHelper();
-            var result = target.Reverse("ab");
+            [TestMethod]
+            [TestCategory("Unit Test")]
+            public void TestReverseWithMultipleCharachters()
+            {
+                var target = new StringHelper();
+                var result = target.Reverse("ab");
 
-            Assert.AreEqual("ba", result);
-        }
+                Assert.AreEqual("ba", result);
+            }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestReverseWithNullAndExpectedExceptionAttribute()
-        {
-           new StringHelper().Reverse(null);
-        }
-
-        [TestMethod]
-        public void TestReverseWithNull()
-        {
-            try
+            [TestMethod]
+            [TestCategory("Unit Test")]
+            [Owner("Manuel")]
+            [TestCategory("Exception tests")]
+            [ExpectedException(typeof(ArgumentNullException))]
+            public void TestReverseWithNullAndExpectedExceptionAttribute()
             {
                 new StringHelper().Reverse(null);
-                Assert.Fail();
             }
-            catch (ArgumentNullException ex)
+
+            [TestMethod]
+            public void TestReverseWithNull()
             {
-                StringAssert.Contains(ex.Message, "input mag niet niks zijn");
+                try
+                {
+                    new StringHelper().Reverse(null);
+                    Assert.Fail();
+                }
+                catch (ArgumentNullException ex)
+                {
+                    StringAssert.Contains(ex.Message, "input mag niet niks zijn");
+                }
             }
         }
 
